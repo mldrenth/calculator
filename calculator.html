@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>Calculator
+        <div id= "wrapper">
+        <div id="calculator-div"> Calc
+            <div id = "display-div"><p>This is what will be displayed</p></div>
+            <div id = "buttons-div">
+                <button id ="button-clear" class = "clear" value = "clear">Clear</button>
+                <button id ="button-divide" class = "operator" value = "divide">/</button>
+                <button id ="button-multiply" class = "operator" value = "multiply">*</button>
+                <button id ="button-subtract" class = "operator" value = "subtract">-</button>
+                <button id ="button-add" class = "operator" value = "add">+</button>
+                <button id ="button-operator" class = "operator" value = "operate">=</button>
+                <button id ="button-nine" class = "digit" value = "9">9</button>
+                <button id ="button-eight" class = "digit" value = "8">8</button>
+                <button id ="button-seven" class = "digit" value = "7">7</button>
+                <button id ="button-six" class = "digit" value = "6">6</button>
+                <button id ="button-five" class = "digit" value = "5">5</button>
+                <button id ="button-four" class = "digit" value = "4">4</button>
+                <button id ="button-three" class = "digit" value = "3">3</button>
+                <button id ="button-two" class = "digit" value = "2">2</button>
+                <button id ="button-one" class = "digit" value = "1">1</button>
+                <button id ="button-zero" class = "digit" value = "0">0</button>
+            </div>
+
+        </div></div>
+<style>
+    #display-div {
+        background-color: cornsilk;
+        width: 370px;
+        height: 100px;
+        border-radius: 20px;
+        margin: auto;
+        text-align: right;
+    }
+    
+    #wrapper {
+        width: 400px;
+        margin: auto;
+        margin-top: 20px;
+    }
+    #buttons-div {
+        margin-top: 20px;
+    }
+    #calculator-div {
+        text-align: center;
+        background-color: gray;
+        width: 400px;
+        height: 600px;
+        border-radius: 20px;
+    }
+    button {
+        background-color: blue;
+        width: 80px;
+        height: 80px;
+        border-radius: 10px;
+    }
+</style>
+<script>
+let display = 0;
+function add(a,b) {
+    return display = a + b;
+}
+
+function subtract(a,b) {
+    return display = a - b;
+}
+
+function multiply(a,b) {
+    return display = a * b;
+}
+
+function divide(a,b) {
+    return display = a / b;
+}
+
+function operate(operator,a,b) {
+    if (operator === add) {
+        return add(a,b);
+    }
+    else if (operator === subtract) {
+        return subtract(a,b);
+    }
+    else if (operator === multiply) {
+        return multiply(a,b);
+    }
+    else if (operator === divide) {
+        return divide(a,b);
+    }
+}
+
+
+
+
+</script>
+    </body>
+</html>
