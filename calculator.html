@@ -64,6 +64,8 @@ let a = 0;
 let b = 0;
 let operator = "";
 let isPushed = 0;
+let blocked = true;
+let needsClear = false;
 function add(a,b) {
     return displayOutput.textContent = a + b;
 }
@@ -99,30 +101,44 @@ let displayOutput = document.getElementById("display-p");
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
 function updateDisplay(n) {
-    displayOutput.textContent = n;
+    if (needsClear == true) {
+    clearDisplay();
+    }
+    displayOutput.textContent += n;
+    blocked = false;
+    
 }
+function clearDisplay(){
+    displayOutput.textContent = "";
+    needsClear = false;
+}
+
 digitButtons.forEach((button) =>
  button.addEventListener("click", () => updateDisplay(button.textContent))
 )
-
+operatorButtons.forEach((button) =>
+ button.addEventListener("click", () => isChecked(isPushed))
+ )
  operatorButtons.forEach((button) =>
  button.addEventListener("click", () => assignOperator(button.textContent))
  )
-//  operatorButtons.forEach((button) =>
-//  button.addEventListener("click", () => isChecked(isPushed))
-//  )
+ 
 
 operateButton.addEventListener("click", function() {
     evaluate(operator,a)
 });
-// function isChecked(isPushed) {
-//     if (isPushed >= 2) {
-//         evaluate(operator,a);
-//     }
-// }
+function isChecked(isPushed) {
+    if (blocked == false) {
+    if (isPushed >= 1) {
+        evaluate(operator,a);
+        isPushed = 0;
+        blocked = true;
+    }}
+}
 
 function assignOperator(input) {
-    // isPushed += 1
+    isPushed += 1
+    needsClear = true;
     if (input == "+") {
         operator = "add";
         a = parseInt(displayOutput.textContent);
@@ -142,8 +158,10 @@ function assignOperator(input) {
     return operator;
 }
 function evaluate(operator,a) {
+    if (blocked == false) {
     b = parseInt(displayOutput.textContent);
     operate(operator,a,b);
+    blocked = true;}
     return parseInt(displayOutput.textContent);
 }
 </script>
