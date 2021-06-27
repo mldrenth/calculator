@@ -12,7 +12,7 @@
                 <button id ="button-multiply" class = "operator" value = "multiply">*</button>
                 <button id ="button-subtract" class = "operator" value = "subtract">-</button>
                 <button id ="button-add" class = "operator" value = "add">+</button>
-                <button id ="button-operator" class = "operator" value = "operate">=</button>
+                <button id ="button-operator" value = "operate">=</button>
                 <button id="button-nine" class = "digit" value = "9">9</button>
                 <button id ="button-eight" class = "digit" value = "8">8</button>
                 <button id ="button-seven" class = "digit" value = "7">7</button>
@@ -62,38 +62,40 @@
 let display = 0;
 let a = 0;
 let b = 0;
+let operator = "";
+let isPushed = 0;
 function add(a,b) {
-    return display = a + b;
+    return displayOutput.textContent = a + b;
 }
 
 function subtract(a,b) {
-    return display = a - b;
+    return displayOutput.textContent = a - b;
 }
 
 function multiply(a,b) {
-    return display = a * b;
+    return displayOutput.textContent = a * b;
 }
 
 function divide(a,b) {
-    return display = a / b;
+    return displayOutput.textContent = a / b;
 }
 
 function operate(operator,a,b) {
-    if (operator === add) {
+    if (operator === "add") {
         return add(a,b);
     }
-    else if (operator === subtract) {
+    else if (operator === "subtract") {
         return subtract(a,b);
     }
-    else if (operator === multiply) {
+    else if (operator === "multiply") {
         return multiply(a,b);
     }
-    else if (operator === divide) {
+    else if (operator === "divide") {
         return divide(a,b);
     }
 }
-
-const displayOutput = document.getElementById("display-p");
+const operateButton = document.querySelector("#button-operator");
+let displayOutput = document.getElementById("display-p");
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
 function updateDisplay(n) {
@@ -101,11 +103,49 @@ function updateDisplay(n) {
 }
 digitButtons.forEach((button) =>
  button.addEventListener("click", () => updateDisplay(button.textContent))
-
 )
-operatorButtons.forEach((button) =>
- button.addEventListener("click", () => updateDisplay(button.textContent)))
 
+ operatorButtons.forEach((button) =>
+ button.addEventListener("click", () => assignOperator(button.textContent))
+ )
+//  operatorButtons.forEach((button) =>
+//  button.addEventListener("click", () => isChecked(isPushed))
+//  )
+
+operateButton.addEventListener("click", function() {
+    evaluate(operator,a)
+});
+// function isChecked(isPushed) {
+//     if (isPushed >= 2) {
+//         evaluate(operator,a);
+//     }
+// }
+
+function assignOperator(input) {
+    // isPushed += 1
+    if (input == "+") {
+        operator = "add";
+        a = parseInt(displayOutput.textContent);
+    }
+    else if (input == "-") {
+        operator = "subtract";
+        a = parseInt(displayOutput.textContent);
+    }
+    else if (input == "*") {
+        operator = "multiply"; 
+        a = parseInt(displayOutput.textContent);
+    }
+    else if (input == "/") {
+        operator = "divide";
+        a = parseInt(displayOutput.textContent);
+    }
+    return operator;
+}
+function evaluate(operator,a) {
+    b = parseInt(displayOutput.textContent);
+    operate(operator,a,b);
+    return parseInt(displayOutput.textContent);
+}
 </script>
     </body>
 </html>
