@@ -5,7 +5,7 @@
     <body>Calculator
         <div id= "wrapper">
         <div id="calculator-div"> Calc
-            <div id = "display-div"><p>This is what will be displayed</p></div>
+            <div id = "display-div"><p id = "display-p"></p></div>
             <div id = "buttons-div">
                 <button id ="button-clear" class = "clear" value = "clear">Clear</button>
                 <button id ="button-divide" class = "operator" value = "divide">/</button>
@@ -13,7 +13,7 @@
                 <button id ="button-subtract" class = "operator" value = "subtract">-</button>
                 <button id ="button-add" class = "operator" value = "add">+</button>
                 <button id ="button-operator" class = "operator" value = "operate">=</button>
-                <button id ="button-nine" class = "digit" value = "9">9</button>
+                <button id="button-nine" class = "digit" value = "9">9</button>
                 <button id ="button-eight" class = "digit" value = "8">8</button>
                 <button id ="button-seven" class = "digit" value = "7">7</button>
                 <button id ="button-six" class = "digit" value = "6">6</button>
@@ -60,6 +60,8 @@
 </style>
 <script>
 let display = 0;
+let a = 0;
+let b = 0;
 function add(a,b) {
     return display = a + b;
 }
@@ -91,8 +93,18 @@ function operate(operator,a,b) {
     }
 }
 
+const displayOutput = document.getElementById("display-p");
+const digitButtons = document.querySelectorAll(".digit");
+const operatorButtons = document.querySelectorAll(".operator");
+function updateDisplay(n) {
+    displayOutput.textContent = n;
+}
+digitButtons.forEach((button) =>
+ button.addEventListener("click", () => updateDisplay(button.textContent))
 
-
+)
+operatorButtons.forEach((button) =>
+ button.addEventListener("click", () => updateDisplay(button.textContent)))
 
 </script>
     </body>
