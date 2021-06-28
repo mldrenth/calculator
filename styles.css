@@ -1,0 +1,35 @@
+#display-div {
+    background-color: cornsilk;
+    width: 370px;
+    height: 100px;
+    border-radius: 20px;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+    word-break: break-all;
+    align-self: flex-end;
+   
+    
+}
+
+#wrapper {
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+}
+#buttons-div {
+    margin-top: 20px;
+}
+#calculator-div {
+    text-align: center;
+    background-color: gray;
+    width: 400px;
+    height: 600px;
+    border-radius: 20px;
+}
+button {
+    background-color: blue;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+}
